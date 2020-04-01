@@ -1,0 +1,45 @@
+{
+  "name": "corona",
+  "version": "1.0.0",
+  "description": "Corona Tracker App",
+  "main": "./src/index.js",
+  "author": "Vaibhav",
+  "license": "ISC",
+  "engines": {
+    "npm": "6.13.4",
+    "node": "12.14.1"
+  },
+  "dependencies": {
+    "@devexpress/dx-react-chart": "^2.6.0",
+    "@devexpress/dx-react-chart-material-ui": "^2.6.0",
+    "@devexpress/dx-react-core": "^2.6.0",
+    "@material-ui/core": "^4.9.8",
+    "@material-ui/icons": "^4.9.1",
+    "axios": "^0.19.2",
+    "cheerio": "^1.0.0-rc.3",
+    "jssoup": "0.0.11",
+    "mapbox-gl": "^1.9.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-redux": "^7.2.0",
+    "react-scripts": "^3.4.1",
+    "redux": "^4.0.5",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.5"
+  },
+  "devDependencies": {
+    "typescript": "3.3.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
