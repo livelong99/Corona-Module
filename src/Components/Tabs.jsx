@@ -44,9 +44,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     display: 'flex',
     height: 500,
-    position:"absolute",
+    position:"relative",
     top:300,
-    left:100,
+    // left:100,
     width:1300,
     borderRadius: 10,
     maxWidth: 1960,
@@ -97,7 +97,8 @@ export default function VerticalTabs() {
         return(
             <TabPanel value={value} index={index}>
             <div className = "countryDetail">
-                <h1> {record.country }<img  alt="Flag" className="flag" src={record.countryInfo.flag}></img></h1><br/>
+            <img  alt="Flag" className="flag" src={record.countryInfo.flag}></img>
+                <h1> {record.country }</h1><br/>
                 <p>Total Cases: {record.cases}</p>
                 <p>New Cases Today: {record.todayCases}</p>
                 <p><p className="red">Deaths: {record.deaths}</p></p>
@@ -116,6 +117,7 @@ export default function VerticalTabs() {
   };
 
   return (
+
     <div className={classes.root}>
       <Tabs
         orientation="vertical"

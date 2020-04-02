@@ -1,28 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Menu(props) {
+
+    const [check, setCheck] = useState(false);
+
+    function checkbox() {
+      if(check)
+        setCheck(false);
+      else
+        setCheck(true);
+    }
+
     return (
         <div class="menu-wrap">
-    <input type="checkbox" id="menu" class="toggler" />
+    <input type="checkbox" onClick={checkbox} id="menu" class="toggler" checked={check} />
     <div class="hamburger"><div></div></div>
     <div class="menu">
       <div>
         <div>
           <ul>
             <li><button onClick={() => {
-              document.getElementsById("menu").click();
               props.toShow(1);
+              setCheck(false);
             }}>World</button></li>
             <li><button onClick={() => {
-              document.getElementsById("menu").click();
+              setCheck(false);
               props.toShow(2);
             }}>India</button></li>
             <li><button onClick={() => {
-              document.getElementsById("menu").click();
+              setCheck(false);
               props.toShow(3);
             }}>Things We can do</button></li>
             <li><button onClick={() => {
-              document.getElementsById("menu").click();
+              setCheck(false);
               props.toShow(4);
             }}>Helpline</button></li>
           </ul>

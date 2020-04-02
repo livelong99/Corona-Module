@@ -28,6 +28,7 @@
   
   header h1 {
     color: #fff;
+    font-size: 220%;
     font-family: "McLaren", cursive;
     font-weight: 200;
   }
@@ -76,20 +77,35 @@
 
   
 
-  .container {
-    position: relative;
+  /* .container {
+    flex-grow: 3px;
+    position: absolute;
     background-color: #fff;
-    top:1000px;
-    width:50%;
-    align-self: center;
-    align-items: center;
+    top:400px;
+    left:100px;
+    display: flex;
+    height:500px;
+    width:1300px;
     border-radius: 10px;
-    max-width: 960px;
     margin: auto;
-    overflow: hidden;
-    padding: 0 3rem;
-    z-index: -1;
+    max-width: 1800;
+    z-index: -1; */
+
   }
+
+  /* flexGrow: 3,
+    backgroundColor: theme.palette.background.paper,
+    display: 'flex',
+    height: 500,
+    position:"relative",
+    top:300,
+    left:100,
+    width:1300,
+    borderRadius: 10,
+    maxWidth: 1960,
+    margin: "auto",
+    zIndex: -1,
+    marginBottom: 200 */
 
  
   /*Menu Code*/
@@ -262,16 +278,15 @@
     line-height: 38px;
     color: black;
     font-family: "McLaren","Roboto", sans-serif;
-    font-size: 25px;
+    font-size: 164%;
     display: inline-block;
     padding: 10px 100px 10px 30px;
   }
 
   img.flag {
-    width: 35%;
-    height: 35%;
-    padding-left: 50px;
-    padding-top: -30px;
+    width: 80px;
+    height: 50px;
+    margin-left: 5px;
   }
 
   
