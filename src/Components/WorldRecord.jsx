@@ -25,7 +25,7 @@ function World () {
 
     return (
         <div className="total">
-            <p><b>Total Cases :</b> {total.cases}</p>assda
+            <p><b>Total Cases :</b> {total.cases}</p>assdaa
             <p style={{"color":"red"}}><b>Total Deaths :</b> {total.deaths}</p>
             <p style={{"color":"green"}}><b>Total Recoveries:</b> {total.recovered} </p>
             <p><b>Active Cases:</b> {total.active} </p>

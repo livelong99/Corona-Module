@@ -230,9 +230,12 @@
     padding: 1rem;
   }
   
-  .menu-wrap .menu > div > div > ul > li > a {
+  .menu-wrap .menu > div > div > ul > li > button {
+    background-color:inherit ;
     color: inherit;
-    text-decoration: none;
+    font-size:inherit;
+    size:2rem;
+    border: none;
     transition: color 0.4s ease;
   }
 
@@ -262,6 +265,13 @@
     font-size: 25px;
     display: inline-block;
     padding: 10px 100px 10px 30px;
+  }
+
+  img.flag {
+    width: 35%;
+    height: 35%;
+    padding-left: 50px;
+    padding-top: -30px;
   }
 
   

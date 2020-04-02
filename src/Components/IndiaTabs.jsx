@@ -5,8 +5,8 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import rp from "request-promise";
-import $ from "cheerio";
+const rp = require("request-promise");
+const $ = require("cheerio");
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -43,16 +43,16 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 3,
     backgroundColor: theme.palette.background.paper,
     display: 'flex',
-    height: 500,
+    height: 350,
     position:"absolute",
     top:300,
-    left:100,
-    width:1300,
+    left:360,
+    width:800,
     borderRadius: 10,
     maxWidth: 1960,
     margin: "auto",
     zIndex: -1,
-    marginBottom: 200
+    marginBottom: 400
   },
   tabs: {
     borderRight: `1px solid ${theme.palette.divider}`,
@@ -62,32 +62,45 @@ const useStyles = makeStyles((theme) => ({
 export default function VerticalTabs() {
   const classes = useStyles();
   const [value, setValue] = useState(0);
-  const [records, setRecords] = useState();
+  const [records, setRecords] = useState([]);
 
   function setR() {
     const siteUrl = "https://www.mohfw.gov.in/";
-      rp(siteUrl)
-        .then(html => {
-            const Record =[];
-            for(var i=0; i<27; i++)
-            {
-                const rec = {
-                    state: $(".content > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(2) > tr:nth-child("+(i+1)+") > td:nth-child(2)",html)[0].children[0].data,
-                    totalCases:  $(".content > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(2) > tr:nth-child("+(i+1)+") > td:nth-child(3)",html)[0].children[0].data,
-                    recovered: $(".content > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(2) > tr:nth-child("+(i+1)+") > td:nth-child(4)",html)[0].children[0].data,
-                    deaths: $(".content > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(2) > tr:nth-child("+(i+1)+") > td:nth-child(5)",html)[0].children[0].data
-                }
-                Record.push(rec);
-                
+    rp(siteUrl)
+    .then(html => { 
+      var i=0;
+      var k="1234";
+      const Record = [];
+      
+      var rec = {
+        state: $(".table > tbody:nth-child(2) > tr:nth-child("+(i+1)+") > td:nth-child(2)",html)[0].children[0].data,
+        totalCases:  $(".table > tbody:nth-child(2) > tr:nth-child("+(i+1)+") > td:nth-child(3)",html)[0].children[0].data,
+        recovered: $(".table > tbody:nth-child(2) > tr:nth-child("+(i+1)+") > td:nth-child(4)",html)[0].children[0].data,
+        deaths: $(".table > tbody:nth-child(2) > tr:nth-child("+(i+1)+") > td:nth-child(5)",html)[0].children[0].data
+      }
+            
+        while(k.length!==0)
+        {
+          i++;
+          Record.push(rec);
+            rec = {
+                state: $(".table > tbody:nth-child(2) > tr:nth-child("+(i+1)+") > td:nth-child(2)",html)[0].children[0].data,
+                totalCases:  $(".table > tbody:nth-child(2) > tr:nth-child("+(i+1)+") > td:nth-child(3)",html)[0].children[0].data,
+                recovered: $(".table > tbody:nth-child(2) > tr:nth-child("+(i+1)+") > td:nth-child(4)",html)[0].children[0].data,
+                deaths: $(".table > tbody:nth-child(2) > tr:nth-child("+(i+1)+") > td:nth-child(5)",html)[0].children[0].data
             }
-            setRecords(Record);
-        })
-        .catch(error => {
-            console.log(error)
-        });
+            k = $(".table > tbody:nth-child(2) > tr:nth-child("+(i+2)+") > td:nth-child(5)",html);
+        }  
+        setRecords(Record); 
+        console.log(records);   
+    })
+    .catch(error => {
+        console.log(error)
+    });
+  
   }
   setR();
-console.log(records);
+
 
     function setLabel(record, index){
         return (
@@ -125,9 +138,9 @@ console.log(records);
         aria-label="Corona Live"
         className={classes.tabs}
       >
-        {/* {records.map(setLabel)} */}
+        {records.map(setLabel)}
       </Tabs>
-      {/* {records.map(setPanel)} */}
+      {records.map(setPanel)}
     </div>
   );
 }
