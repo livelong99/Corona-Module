@@ -9,10 +9,10 @@ function Menu() {
       <div>
         <div>
           <ul>
-            <li><a href="#">World</a></li>
-            <li><a href="#">India</a></li>
-            <li><a href="#">Things We can do</a></li>
-            <li><a href="#">Helpline</a></li>
+            <li><button>World</button></li>
+            <li><button>India</button></li>
+            <li><button>Things We can do</button></li>
+            <li><button>Helpline</button></li>
           </ul>
         </div>
       </div>

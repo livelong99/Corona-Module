@@ -10,9 +10,6 @@ import {
   ZoomAndPan,
   Title
 } from "@devexpress/dx-react-chart-material-ui";
-import red from "../Images/Red.svg";
-import green from "../Images/green.jpg";
-import blue from "../Images/blue.png";
 
 
 function Graph(props) {
@@ -34,18 +31,7 @@ function Graph(props) {
   }
   SetH();
 
-  const info = history.filter((rec)=>(rec.country===props.name));
-
-  const SpecialMarkerComponent = ({ name, color }) => {
-    const Icon = name === 'Total Deaths' ? red : blue;
-
-    // xlinkHref is use for safari
-    return (
-      <svg width={18} height={18} viewBox={Icon.viewBox}>
-        <use fill={color} xlinkHref={`#${Icon.id}`} />
-      </svg>
-    );
-  }
+  const info = history.filter((rec)=>(rec.country===props.name))
 
   function getData(record) {
     const Cases = record.timeline.cases;
@@ -54,19 +40,23 @@ function Graph(props) {
     const data = []
     const dates = Object.keys(Cases);
     var i =0;
-    var k = dates.length/10;
+    var k = Math.round(dates.length/10);
     var date;
     for(date of dates) {
        if(Cases[date]>0){
-        if(i%(k-1)==0)
-          data.push({argument:date.substring(0,4) , cases: Cases[date], deaths: Deaths[date], recovered: Recovered[date] });
+        if(i%(k-1)===0){
+          if(date.length===7)
+            data.push({argument:date.substring(0,4) , cases: Cases[date], deaths: Deaths[date], recovered: Recovered[date] });
+          else
+            data.push({argument:date.substring(0,3) , cases: Cases[date], deaths: Deaths[date], recovered: Recovered[date] });
+        }
         //else
           //data.push({argument:"" , cases: Cases[date], deaths: Deaths[date], recovered: Recovered[date] });
        }
        i++;
     }
     date = dates[dates.length-1];
-    data.push({argument:date , cases: Cases[date], deaths: Deaths[date], recovered: Recovered[date] });
+    data.push({argument:date.substring(0,4) , cases: Cases[date], deaths: Deaths[date], recovered: Recovered[date] });
     return (
       <Chart data={data} width={800} height={400}>
         <ArgumentAxis/>
