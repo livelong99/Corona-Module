@@ -40,14 +40,14 @@ function a11yProps(index) {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 3,
+    flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
     display: 'flex',
     height: 350,
-    position:"absolute",
-    top:570,
-    left:360,
-    width:800,
+    position:"relative",
+    top:450,
+    //left:360,
+    width:470,
     borderRadius: 10,
     maxWidth: 1960,
     margin: "auto",

@@ -6,9 +6,8 @@ import Total from "./Total";
 function India() {
     return(
         <div>
-            <div className="logoBack"></div>
-            <div className="logo">
-                <img src="./Images/India.png" style={{width:300}} alt= "World"></img>
+            <div className="Indialogo">
+                <img src="./Images/India.png"  alt= "World"></img>
             </div>
             <Total />
             <Tabs />

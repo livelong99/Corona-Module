@@ -40,19 +40,19 @@ function a11yProps(index) {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 3,
+    flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
     display: 'flex',
     height: 500,
-    position:"absolute",
-    top:550,
-    left:100,
+    position:"relative",
+    top:500,
+    //left:100,
     width:1300,
     borderRadius: 10,
     maxWidth: 1960,
     margin: "auto",
     zIndex: -1,
-    marginBottom: 200
+    marginBottom: 100
   },
   tabs: {
     borderRight: `1px solid ${theme.palette.divider}`,
