@@ -116,7 +116,7 @@ export default function VerticalTabs() {
                 <p>Total Cases: {record.totalCases}</p>
                 <p><p className="red">Deaths: {record.deaths}</p></p>
                 <p><p className="green">Recoveries: {record.recovered}</p></p>
-                <p>Active Cases: {record.totalCases-record.death-record.recovered}</p>
+                <p>Active Cases: {Number(record.totalCases)-Number(record.deaths)-Number(record.recovered)}</p>
             </div>
             </TabPanel>
         )
