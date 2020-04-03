@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 import Header from "./Header";
-
-
+import India from "./India";
+import World from "./World";
 import Menu from "./Menu";
-import Tabs from "./Tabs";
-import World from "./WorldRecord";
-import India from "./IndiaTabs";
 
 function App() {
 
-    const [show, setShow] = useState(1);
+    const [show, setShow] = useState(2);
 
     function whatToShow(k) {
         setShow(k);
@@ -18,7 +15,7 @@ function App() {
     function display()
     {
         if(show===1)
-            return (<Tabs />);
+            return (<World />);
         else if(show===2)
             return (<India />);
     }
@@ -28,10 +25,7 @@ function App() {
         <div>
             <Menu toShow={whatToShow} />
             <Header />
-            {/* {<div className="container">} */} 
-            <World />
             {display()}
-            {/* {</div>} */}
             {/* <Footer /> */}
         </div>
     );

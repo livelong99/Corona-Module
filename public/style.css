@@ -75,7 +75,88 @@
     color: #33cc33;
   }
 
+
+  .total {
+    text-align: center;
+    position: relative;
+    padding: 35px 0;
+    top:100px;
+  }
+
+  .total ul {
+    padding: 0;
+    margin: 10px 0;
+  }
+
+  .total ul > li {
+    list-style: none;
+    display: inline-block;
+    border-radius: 10px;
+    color: #fff;
+    text-align: center;
+    margin: 0px 6px;
+    width: 20%;
+    padding: 18px 0;
+  }
   
+  .total ul > li > strong {
+    display: block;
+    margin: 6px 0;
+    font-size: 30px;
+    line-height: 30px;
+  }
+
+  .total ul > li > span {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .total ul > li.blue {
+    color: #002c56;
+    background: #a5c9fd;
+    /* Old browsers */
+    background: -webkit-linear-gradient(top, #a5c9fd 0%, #a5c9fd 6%, #a7cbff 8%, #a5c9fd 11%, #a7cbff 11%, #aacffc 28%, #b0d5ff 44%, #b0d6fb 48%, #b5dbff 62%, #b4dbfc 62%, #b8dffe 75%, #bae2fb 79%, #bce4fe 91%, #bde6fa 96%, #bee7fd 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #a5c9fd 0%, #a5c9fd 6%, #a7cbff 8%, #a5c9fd 11%, #a7cbff 11%, #aacffc 28%, #b0d5ff 44%, #b0d6fb 48%, #b5dbff 62%, #b4dbfc 62%, #b8dffe 75%, #bae2fb 79%, #bce4fe 91%, #bde6fa 96%, #bee7fd 100%);
+  }
+
+  .total ul > li.orange {
+    color: #582700;
+    background: #f5ce67;
+    background: -webkit-linear-gradient(top, #f5ce67 0%, #f8cd67 4%, #f6cc66 7%, #f7cb6c 13%, #f5c66c 21%, #f8c76b 23%, #f7c570 27%, #f7c36f 33%, #f9c174 39%, #f8bf72 40%, #f9ba73 47%, #f9ba77 52%, #fdb877 56%, #fab677 57%, #f9b479 60%, #fab17c 67%, #fcb17a 69%, #fbaf7e 74%, #fcab7c 77%, #fcab7e 84%, #fdaa82 85%, #fca683 100%);
+    background: linear-gradient(to bottom, #f5ce67 0%, #f8cd67 4%, #f6cc66 7%, #f7cb6c 13%, #f5c66c 21%, #f8c76b 23%, #f7c570 27%, #f7c36f 33%, #f9c174 39%, #f8bf72 40%, #f9ba73 47%, #f9ba77 52%, #fdb877 56%, #fab677 57%, #f9b479 60%, #fab17c 67%, #fcb17a 69%, #fbaf7e 74%, #fcab7c 77%, #fcab7e 84%, #fdaa82 85%, #fca683 100%);
+  }
+
+  .total ul > li.green {
+    color: #015b25;
+    background: #9ae69c;
+    background: -webkit-linear-gradient(top, #9ae69c 0%, #9ce999 5%, #9cea9e 6%, #9cea9e 6%, #a0e99a 10%, #a3eb95 24%, #adee92 36%, #adee90 40%, #b3ef8f 45%, #b0f08f 46%, #b4f18a 50%, #b7f18d 51%, #b6f08a 53%, #baf18b 58%, #c4f780 77%, #c9f681 86%, #ccfa7e 90%, #cbf77c 94%, #cff87e 96%, #cff87e 100%);
+    background: linear-gradient(to bottom, #9ae69c 0%, #9ce999 5%, #9cea9e 6%, #9cea9e 6%, #a0e99a 10%, #a3eb95 24%, #adee92 36%, #adee90 40%, #b3ef8f 45%, #b0f08f 46%, #b4f18a 50%, #b7f18d 51%, #b6f08a 53%, #baf18b 58%, #c4f780 77%, #c9f681 86%, #ccfa7e 90%, #cbf77c 94%, #cff87e 96%, #cff87e 100%);
+  }
+
+  .total ul > li.red {
+    color: #5a0502;
+    background: #ff8582;
+    background: -webkit-linear-gradient(top, #ff8582 0%, #fe8685 16%, #ff908e 44%, #fe908f 53%, #ff9692 62%, #ff9597 67%, #ff9a98 84%, #ff9b9b 85%, #fe9c9d 91%, #ff9e98 96%, #ff9d9c 96%, #ff9e9d 100%);
+    background: linear-gradient(to bottom, #ff8582 0%, #fe8685 16%, #ff908e 44%, #fe908f 53%, #ff9692 62%, #ff9597 67%, #ff9a98 84%, #ff9b9b 85%, #fe9c9d 91%, #ff9e98 96%, #ff9d9c 96%, #ff9e9d 100%);
+  }
+  .logo {
+    position:absolute;
+    left: 620px;
+    top: 100px;
+    z-index: -1;
+  }
+
+  .logo img {
+    width: 200px;
+    height:200px;
+  }
+  .logoBack {
+    position: relative;
+    top: 100px;
+    height: 80px;
+    width: 50px;
+  }
 
   /* .container {
     flex-grow: 3px;
@@ -118,7 +199,7 @@
   }
   
   .menu-wrap .toggler {
-    position: absolute;
+    position: fixed;
     top: 16px;
     left: 0;
     z-index: 2;
@@ -129,7 +210,7 @@
   }
   
   .menu-wrap .hamburger {
-    position: absolute;
+    position: fixed;
     top: 7px;
     left: 0;
     z-index: 1;
@@ -257,18 +338,19 @@
 
   .total{
     position: relative;
-    top:140px;
+    top:240px;
     background-color: #fff;
-    width:70%;
+    width:950px;
     align-self: center;
     align-items: center;
     border-radius: 10px;
-    max-width: 960px;
+    min-width: 960px;
     margin: auto;
     overflow: hidden;
     padding: 0 3rem;
     z-index: -1;
     color: #fff;
+
     /* border-color: red;
     border-style: solid;
     border-width: thin; */
