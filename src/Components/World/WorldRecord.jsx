@@ -20,8 +20,6 @@ function World () {
    }
 
     SetT();
-    
-    setInterval(SetT, 1000000);
 
     return (
         <div className="total">

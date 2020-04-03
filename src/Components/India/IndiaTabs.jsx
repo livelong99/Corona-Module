@@ -64,9 +64,9 @@ export default function VerticalTabs() {
   const [value, setValue] = useState(0);
   const [records, setRecords] = useState([]);
   
-  function setR() {
+  const setR = async () => {
     const siteUrl = "https://www.mohfw.gov.in/";
-    rp(siteUrl)
+    const Record = await rp(siteUrl)
     .then(html => { 
       var i=0;
       var k="1234";
@@ -91,12 +91,13 @@ export default function VerticalTabs() {
             }
             k = $(".table > tbody:nth-child(2) > tr:nth-child("+(i+2)+") > td:nth-child(5)",html);
         }  
-        setRecords(Record); 
+        return Record;
            
     })
     .catch(error => {
         console.log(error)
     });
+    setRecords(Record); 
   
   }
   setR();

@@ -82,10 +82,7 @@ export default function VerticalTabs() {
     setRecords(rec);
    }
 
-    SetR();
-    
-    setInterval(SetR, 1000000);
-    
+    SetR();    
 
     function setLabel(record, index){
         return (
