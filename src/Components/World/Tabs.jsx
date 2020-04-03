@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
     height: 500,
     position:"relative",
     top:500,
-    //left:100,
+    right:50,
     width:1300,
     borderRadius: 10,
     maxWidth: 1960,

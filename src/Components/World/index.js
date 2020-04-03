@@ -5,8 +5,7 @@ import Total from "./WorldRecord";
 function World() {
     return (
         <div>
-            <div className="logoBack"></div>
-            <div className="logo">
+            <div className="Worldlogo">
                 <img src="./Images/World.png" alt="India"></img>
             </div>
             <Total />
