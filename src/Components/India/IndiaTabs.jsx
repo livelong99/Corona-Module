@@ -5,8 +5,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-const rp = require("request-promise");
-const $ = require("cheerio");
+import axios from "axios";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -52,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 1960,
     margin: "auto",
     zIndex: -1,
-    marginBottom: 400
+    marginBottom: 100
   },
   tabs: {
     borderRight: `1px solid ${theme.palette.divider}`,
@@ -64,43 +63,24 @@ export default function VerticalTabs() {
   const [value, setValue] = useState(0);
   const [records, setRecords] = useState([]);
   
-  const setR = async () => {
-    const siteUrl = "https://www.mohfw.gov.in/";
-    const Record = await rp(siteUrl)
-    .then(html => { 
-      var i=0;
-      var k="1234";
-      const Record = [];
-      
-      var rec = {
-        state: $(".table > tbody:nth-child(2) > tr:nth-child("+(i+1)+") > td:nth-child(2)",html)[0].children[0].data,
-        totalCases:  $(".table > tbody:nth-child(2) > tr:nth-child("+(i+1)+") > td:nth-child(3)",html)[0].children[0].data,
-        recovered: $(".table > tbody:nth-child(2) > tr:nth-child("+(i+1)+") > td:nth-child(4)",html)[0].children[0].data,
-        deaths: $(".table > tbody:nth-child(2) > tr:nth-child("+(i+1)+") > td:nth-child(5)",html)[0].children[0].data
-      }
-            
-        while(k.length!==0)
-        {
-          i++;
-          Record.push(rec);
-            rec = {
-                state: $(".table > tbody:nth-child(2) > tr:nth-child("+(i+1)+") > td:nth-child(2)",html)[0].children[0].data,
-                totalCases:  $(".table > tbody:nth-child(2) > tr:nth-child("+(i+1)+") > td:nth-child(3)",html)[0].children[0].data,
-                recovered: $(".table > tbody:nth-child(2) > tr:nth-child("+(i+1)+") > td:nth-child(4)",html)[0].children[0].data,
-                deaths: $(".table > tbody:nth-child(2) > tr:nth-child("+(i+1)+") > td:nth-child(5)",html)[0].children[0].data
-            }
-            k = $(".table > tbody:nth-child(2) > tr:nth-child("+(i+2)+") > td:nth-child(5)",html);
-        }  
-        return Record;
-           
+  const SetR = async () => {
+    const rec = await axios({
+        "method":"GET",
+        "url":"https://api.rootnet.in/covid19-in/unofficial/covid19india.org/statewise",
+        })
+    .then((response)=>{
+        const Timeline = response.data.data.statewise;
+        console.log(Timeline);
+        return Timeline;
     })
-    .catch(error => {
+    .catch((error)=>{
         console.log(error)
-    });
-    setRecords(Record); 
-  
-  }
-  setR();
+});
+setRecords(rec);
+}
+
+SetR();    
+
 
 
     function setLabel(record, index){
@@ -114,10 +94,10 @@ export default function VerticalTabs() {
             <TabPanel value={value} index={index}>
             <div className = "countryDetail">
                 <h1> {record.state}</h1><br/>
-                <p>Total Cases: {record.totalCases}</p>
+                <p>Total Cases: {record.confirmed}</p>
                 <p><p className="red">Deaths: {record.deaths}</p></p>
                 <p><p className="green">Recoveries: {record.recovered}</p></p>
-                <p>Active Cases: {Number(record.totalCases)-Number(record.deaths)-Number(record.recovered)}</p>
+                <p>Active Cases: {record.active}</p>
             </div>
             </TabPanel>
         )
