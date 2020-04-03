@@ -6,7 +6,7 @@ import Menu from "./Menu";
 
 function App() {
 
-    const [show, setShow] = useState(2);
+    const [show, setShow] = useState(1);
 
     function whatToShow(k) {
         setShow(k);
