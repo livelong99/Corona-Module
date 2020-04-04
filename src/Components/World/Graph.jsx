@@ -18,6 +18,23 @@ function Graph(props) {
 
   const [history, setHistory] = useContext(HistoryContext);
 
+  const Hist = async () => {
+    const rec = await axios({
+    "method": "get",
+    "url": "https://corona.lmao.ninja/v2/historical"})
+    .then((response)=>{
+        const Timeline = response.data;
+        return Timeline;
+    })
+    .catch((error)=>{
+        console.log(error)
+  });
+  setHistory(rec)
+  }
+
+  if(history.length===0)
+    Hist();
+
   const info = history.filter((rec)=>(rec.country===props.name))
 
   function getData(record) {

@@ -64,7 +64,27 @@ function VerticalTabs(props) {
   const classes = useStyles();
   const [value, setValue] = useState(0); 
   const [world, setWorld] = useContext(WorldContext);
-  
+
+  const World =  async () => {
+    const rec = await axios({
+        "method":"GET",
+        "url":"https://corona.lmao.ninja/countries",
+        "params":{
+        "sort":"cases"
+        }
+        })
+    .then((response)=>{
+        const Timeline = response.data;
+        setWorld(Timeline);
+    })
+    .catch((error)=>{
+        console.log(error)
+    });
+  }
+
+  if(world.length === 0)
+    World();
+
     function setLabel(record, index){
         return (
             <Tab label={record.country} {...a11yProps(index)} />

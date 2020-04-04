@@ -81,8 +81,8 @@ function VerticalTabs(props) {
   setInd(rec);
   } 
 
-  if(ind===null)
-    India();
+  if(ind.length === 0)
+  India();
   
   
     function setLabel(record, index){

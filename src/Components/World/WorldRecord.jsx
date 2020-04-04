@@ -1,9 +1,26 @@
 import React, { useState, useContext } from "react";
+import axios from "axios";
 import {WorldFullContext} from '../Store';
 
 
 function World (props) {
-    const [wTotal, setWorldTotal] = useContext(WorldFullContext);  
+    const [wTotal, setWorldTotal] = useContext(WorldFullContext);
+    const WTotal = async () => {
+        const rec = await axios({
+            "method":"GET",
+            "url":"https://corona.lmao.ninja/all"
+            })
+        .then((response)=>{
+            const Timeline = response.data;
+            setWorldTotal(Timeline);
+        })
+        .catch((error)=>{
+            console.log(error)
+    });
+    }
+    
+    if(wTotal.length === 0)
+        WTotal();
 
     return (
         <div className="total">

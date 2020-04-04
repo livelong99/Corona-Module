@@ -7,6 +7,23 @@ function Total(props) {
 
     const [indTotal, setIndTotal] = useContext(IndiaFullContext);
 
+    const ITotal = async () => {
+        const rec = await axios({
+            "method":"GET",
+            "url":"https://corona.lmao.ninja/countries/India"
+            })
+            .then((response)=>{
+                const Timeline = response.data;
+                return Timeline;
+            })
+            .catch((error)=>{
+                console.log(error)
+            });
+            setIndTotal(rec);
+    }
+    if(indTotal.length === 0)
+        ITotal();
+
     return(
         <div className="total">
             <ul>

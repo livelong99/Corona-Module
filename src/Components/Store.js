@@ -18,86 +18,86 @@ const Store = ({children}) => {
     const [wTotal, setWorldTotal] = useState([]);
     const [history, setHistory] = useState([]);
 
-    const World =  async () => {
-        const rec = await axios({
-            "method":"GET",
-            "url":"https://corona.lmao.ninja/countries",
-            "params":{
-            "sort":"cases"
-            }
-            })
-        .then((response)=>{
-            const Timeline = response.data;
-            setWorld(Timeline);
-        })
-        .catch((error)=>{
-            console.log(error)
-        });
-      }
+    // const World =  async () => {
+    //     const rec = await axios({
+    //         "method":"GET",
+    //         "url":"https://corona.lmao.ninja/countries",
+    //         "params":{
+    //         "sort":"cases"
+    //         }
+    //         })
+    //     .then((response)=>{
+    //         const Timeline = response.data;
+    //         setWorld(Timeline);
+    //     })
+    //     .catch((error)=>{
+    //         console.log(error)
+    //     });
+    //   }
 
-      const WTotal = async () => {
-        const rec = await axios({
-            "method":"GET",
-            "url":"https://corona.lmao.ninja/all"
-            })
-        .then((response)=>{
-            const Timeline = response.data;
-            setWorldTotal(Timeline);
-        })
-        .catch((error)=>{
-            console.log(error)
-    });
-    }
+    //   const WTotal = async () => {
+    //     const rec = await axios({
+    //         "method":"GET",
+    //         "url":"https://corona.lmao.ninja/all"
+    //         })
+    //     .then((response)=>{
+    //         const Timeline = response.data;
+    //         setWorldTotal(Timeline);
+    //     })
+    //     .catch((error)=>{
+    //         console.log(error)
+    // });
+    // }
 
-    const ITotal = async () => {
-        const rec = await axios({
-            "method":"GET",
-            "url":"https://corona.lmao.ninja/countries/India"
-            })
-            .then((response)=>{
-                const Timeline = response.data;
-                return Timeline;
-            })
-            .catch((error)=>{
-                console.log(error)
-            });
-            setIndTotal(rec);
-    }
+    // const ITotal = async () => {
+    //     const rec = await axios({
+    //         "method":"GET",
+    //         "url":"https://corona.lmao.ninja/countries/India"
+    //         })
+    //         .then((response)=>{
+    //             const Timeline = response.data;
+    //             return Timeline;
+    //         })
+    //         .catch((error)=>{
+    //             console.log(error)
+    //         });
+    //         setIndTotal(rec);
+    // }
 
-    const Hist = async () => {
-        const rec = await axios({
-        "method": "get",
-        "url": "https://corona.lmao.ninja/v2/historical"})
-        .then((response)=>{
-            const Timeline = response.data;
-            return Timeline;
-        })
-        .catch((error)=>{
-            console.log(error)
-      });
-      setHistory(rec)
-      }
+    // const Hist = async () => {
+    //     const rec = await axios({
+    //     "method": "get",
+    //     "url": "https://corona.lmao.ninja/v2/historical"})
+    //     .then((response)=>{
+    //         const Timeline = response.data;
+    //         return Timeline;
+    //     })
+    //     .catch((error)=>{
+    //         console.log(error)
+    //   });
+    //   setHistory(rec)
+    //   }
     
-      const India = async () => {
-        const rec = await axios({
-            "method":"GET",
-            "url":"https://api.rootnet.in/covid19-in/unofficial/covid19india.org/statewise",
-            })
-        .then((response)=>{
-            const Timeline = response.data.data.statewise;
-            return Timeline;
-        })
-        .catch((error)=>{
-            console.log(error)
-      });
-      setInd(rec);
-      } 
+    //   const India = async () => {
+    //     const rec = await axios({
+    //         "method":"GET",
+    //         "url":"https://api.rootnet.in/covid19-in/unofficial/covid19india.org/statewise",
+    //         })
+    //     .then((response)=>{
+    //         const Timeline = response.data.data.statewise;
+    //         return Timeline;
+    //     })
+    //     .catch((error)=>{
+    //         console.log(error)
+    //   });
+    //   setInd(rec);
+    //   } 
     
-    India();
-    WTotal();
-    Hist();
-    ITotal();
-    World();    
+    // India();
+    // WTotal();
+    // Hist();
+    // ITotal();
+    // World();    
     
     return(
         <WorldContext.Provider value={[world, setWorld]}>
