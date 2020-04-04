@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import {connect} from "react-redux";
 import Paper from "@material-ui/core/Paper";
+import {HistoryContext} from '../Store';
 import axios from "axios";
 import {
   Chart,
@@ -14,22 +16,7 @@ import {
 
 function Graph(props) {
 
-  const [history, setHist] = useState([]);
-
-  const SetH = async () => {
-    const rec = await axios({
-      "method": "get",
-      "url": "https://corona.lmao.ninja/v2/historical"})
-    .then((response)=>{
-        const Timeline = response.data;
-        return Timeline;
-    })
-    .catch((error)=>{
-        console.log(error)
-  });
-  setHist(rec);
-  }
-  SetH();
+  const [history, setHistory] = useContext(HistoryContext);
 
   const info = history.filter((rec)=>(rec.country===props.name))
 
@@ -94,4 +81,7 @@ function Graph(props) {
   );
 }
 
-export default Graph;
+
+
+
+export default (Graph);

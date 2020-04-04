@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, {useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import {IndiaContext} from "../Store";
 import axios from "axios";
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -58,31 +60,31 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function VerticalTabs() {
+function VerticalTabs(props) {
   const classes = useStyles();
   const [value, setValue] = useState(0);
-  const [records, setRecords] = useState([]);
+  const [ind, setInd] = useContext(IndiaContext);
   
-  const SetR = async () => {
+
+  const India = async () => {
     const rec = await axios({
         "method":"GET",
         "url":"https://api.rootnet.in/covid19-in/unofficial/covid19india.org/statewise",
         })
     .then((response)=>{
         const Timeline = response.data.data.statewise;
-        console.log(Timeline);
         return Timeline;
     })
     .catch((error)=>{
         console.log(error)
-});
-setRecords(rec);
-}
+  });
+  setInd(rec);
+  } 
 
-SetR();    
-
-
-
+  if(ind===null)
+    India();
+  
+  
     function setLabel(record, index){
         return (
             <Tab label={record.state} {...a11yProps(index)} />
@@ -119,9 +121,13 @@ SetR();
         aria-label="Corona Live"
         className={classes.tabs}
       >
-        {records.map(setLabel)}
+        {ind.map(setLabel)}
       </Tabs>
-      {records.map(setPanel)}
+      {ind.map(setPanel)}
     </div>
   );
 }
+
+
+
+export default (VerticalTabs);

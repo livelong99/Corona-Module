@@ -1,11 +1,11 @@
 import React, { useState } from "react";
+import Menu from "./Menu"
 import Header from "./Header";
 import India from "./India";
 import World from "./World";
-import Menu from "./Menu";
 
 function App() {
-
+    const [open, setOpen] = useState(false);
     const [show, setShow] = useState(1);
 
     function whatToShow(k) {
@@ -21,7 +21,7 @@ function App() {
     }
 
 
-    return (
+    return ( 
         <div>
             <Menu toShow={whatToShow} />
             <Header />

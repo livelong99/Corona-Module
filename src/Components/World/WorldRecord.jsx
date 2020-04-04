@@ -1,47 +1,31 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState, useContext } from "react";
+import {WorldFullContext} from '../Store';
 
-function World () {
-    const [total, setTotal] = useState({});
 
-    const SetT = async () => {
-        const rec = await axios({
-            "method":"GET",
-            "url":"https://corona.lmao.ninja/all"
-            })
-        .then((response)=>{
-            const Timeline = response.data;
-            return Timeline;
-        })
-        .catch((error)=>{
-            console.log(error)
-    });
-    setTotal(rec);
-   }
-
-    SetT();
+function World (props) {
+    const [wTotal, setWorldTotal] = useContext(WorldFullContext);  
 
     return (
         <div className="total">
             <ul>
                 <li className="orange">
                     <img src="./Images/icon-infected.png" alt="infected"></img>
-                    <strong>{total.cases}</strong>
+                    <strong>{wTotal.cases}</strong>
                     <span>Total Cases</span>
                 </li>
                 <li className="green">
                     <img src="./Images/icon-inactive.png" alt="safe"></img>
-                    <strong>{total.recovered}</strong>
+                    <strong>{wTotal.recovered}</strong>
                     <span>Cured/Dischrged</span>
                 </li>
                 <li className="red">
                     <img src="./Images/icon-death.png" alt="dead"></img>
-                    <strong>{total.deaths}</strong>
+                    <strong>{wTotal.deaths}</strong>
                     <span>Deaths</span>
                 </li>
                 <li className="blue">
                     <img src="./Images/icon-active.png" alt="active"></img>
-                    <strong>{total.active}</strong>
+                    <strong>{wTotal.active}</strong>
                     <span>Active Cases</span>
                 </li>
             </ul>
@@ -49,4 +33,6 @@ function World () {
     );
 }
 
-export default World;
+  
+  
+  export default (World);

@@ -1,17 +1,23 @@
 import React from "react";
 import ReactDom from "react-dom";
+import Store from "./Components/Store";
 import App from "./Components/App";
 
+
 ReactDom.render(
-    <div>
+    <Store>
         <App />
-    </div>,
+    </Store>,
     document.getElementById("root")
 )
-
-//import axios from "axios";
-
-// const axios = require("axios");
-
-
-
+// fetch("https://corona.lmao.ninja/countries/India")
+//     .then(res => {
+//         return response.json();
+//     })
+//     .then(data => {
+//         console.log(data);
+//     })
+//     .catch(err => {
+//         console.log(err);
+//     })
+// console.log(n);

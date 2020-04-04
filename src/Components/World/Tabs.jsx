@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import {WorldContext} from '../Store';
 import axios from "axios";
 import Graph from "./Graph";
 
@@ -46,8 +47,8 @@ const useStyles = makeStyles((theme) => ({
     height: 500,
     position:"relative",
     top:500,
-    right:50,
-    width:1300,
+    overflowX:"scroll",
+    width:"110%",
     borderRadius: 10,
     maxWidth: 1960,
     margin: "auto",
@@ -59,31 +60,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function VerticalTabs() {
+function VerticalTabs(props) {
   const classes = useStyles();
-  const [value, setValue] = useState(0);
-  const [records, setRecords] = useState([]);
-
-    const SetR = async () => {
-        const rec = await axios({
-            "method":"GET",
-            "url":"https://corona.lmao.ninja/countries",
-            "params":{
-            "sort":"cases"
-            }
-            })
-        .then((response)=>{
-            const Timeline = response.data;
-            return Timeline;
-        })
-        .catch((error)=>{
-            console.log(error)
-    });
-    setRecords(rec);
-   }
-
-    SetR();    
-
+  const [value, setValue] = useState(0); 
+  const [world, setWorld] = useContext(WorldContext);
+  
     function setLabel(record, index){
         return (
             <Tab label={record.country} {...a11yProps(index)} />
@@ -124,9 +105,13 @@ export default function VerticalTabs() {
         aria-label="Corona Live"
         className={classes.tabs}
       >
-        {records.map(setLabel)}
+        {world.map(setLabel)}
       </Tabs>
-      {records.map(setPanel)}
+      {world.map(setPanel)}
     </div>
   );
 }
+
+
+
+export default (VerticalTabs);
