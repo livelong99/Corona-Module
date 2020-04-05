@@ -30,7 +30,7 @@ function Menu(props) {
             <li><button onClick={() => {
               setCheck(false);
               props.toShow(3);
-            }}>Public Knoledge</button></li>
+            }}>Public Knowledge</button></li>
             <li><button onClick={() => {
               setCheck(false);
               props.toShow(4);

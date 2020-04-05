@@ -58,6 +58,9 @@ function Graph(props) {
 
   const info = history.filter((rec)=>(rec.country===props.name))
 
+  console.log(info.length);
+  
+
   
 
   function getData(record) {
