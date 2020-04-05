@@ -8,6 +8,7 @@ import Box from '@material-ui/core/Box';
 import {WorldContext} from '../Store';
 import axios from "axios";
 import Graph from "./Graph";
+import dimensions from "../Dimensions";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -67,6 +68,9 @@ function VerticalTabs(props) {
   const classes = useStyles();
   const [value, setValue] = useState(0); 
   const [world, setWorld] = useContext(WorldContext);
+  const {height, width} = dimensions();
+  console.log(width);
+  
 
   const World =  async () => {
     const rec = await axios({
@@ -102,9 +106,9 @@ function VerticalTabs(props) {
                 <h1> {record.country }</h1><br/>
                 <p>Total Cases: {record.cases}</p>
                 <p>New Cases Today: {record.todayCases}</p>
-                <p><p className="red">Deaths: {record.deaths}</p></p>
+                <p><p style={{color:"red"}}>Deaths: {record.deaths}</p></p>
                 <p>New Deaths Today: {record.todayDeaths}</p>
-                <p><p className="green">Recoveries: {record.recovered}</p></p>
+                <p><p style={{color:"green"}}>Recoveries: {record.recovered}</p></p>
                 <p>Active Cases: {record.active}</p>
                 <p>Critical Cases: {record.critical}</p>
             </div>
@@ -119,19 +123,24 @@ function VerticalTabs(props) {
 
   return (
 
-    <div className={classes.root}>
-      <Tabs
-        orientation="vertical"
-        variant="scrollable"
-        value={value}
-        onChange={handleChange}
-        aria-label="Corona Live"
-        className={classes.tabs}
-      >
-        {world.map(setLabel)}
-      </Tabs>
-      {world.map(setPanel)}
-    </div>
+    <>
+      {width<600?(<div className="swipe">
+        <img src="./Images/swipe.png"></img>
+      </div>):null} 
+      <div className={classes.root}>
+        <Tabs
+          orientation="vertical"
+          variant="scrollable"
+          value={value}
+          onChange={handleChange}
+          aria-label="Corona Live"
+          className={classes.tabs}
+        >
+          {world.map(setLabel)}
+        </Tabs>
+        {world.map(setPanel)}
+      </div>
+    </>
   );
 }
 

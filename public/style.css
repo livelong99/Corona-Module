@@ -33,6 +33,23 @@
     text-rendering: optimizeLegibility;
     padding: 0 16px;
   }
+
+  .swipe{
+    position:relative;
+    margin: auto;
+    z-index: -1;
+    width: 50px;
+    height:50px;
+    top:400px;
+    right: 20px;
+    font-family: "Arvo","Ubuntu", sans-serif;
+    /* left:0px; */
+  }
+
+  .swipe img {
+    width: 90px;
+    height:90px;
+  }
   
   header {
     position:fixed;
@@ -41,7 +58,7 @@
     padding: 16px 92px;
     padding-right: 20px;
     width:100%;
-    z-index: auto;
+    z-index: 5;
   }
   
   header h1 {
@@ -61,6 +78,29 @@
   
   footer p {
     color: #ccc;
+  }
+
+  .table {
+    position:relative;
+    margin: auto;
+    width:100%;
+    max-width: 500px;
+  }
+
+  .help {
+    position:relative;
+    top:100px;
+    width:100;
+    margin: auto;
+  }
+  .help h1 {
+    position: relative;
+    margin: auto;
+    top:100px;
+    font-family:"Arvo" ;
+    text-align: center;
+    size:70px;
+    color:white;
   }
 
   .graph {
@@ -100,14 +140,14 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 6;
 }
 
 .menu-wrap .toggler {
   position: absolute;
   top: 0px;
   left: 0;
-  z-index: 2;
+  z-index: 8;
   cursor: pointer;
   width: 50px;
   height: 50px;
@@ -118,7 +158,7 @@
   position: absolute;
   top: 10px;
   left: 0;
-  z-index: 1;
+  z-index: 6;
   width: 60px;
   height: 60px;
   padding: 1rem;
@@ -147,7 +187,7 @@
 .menu-wrap .hamburger > div::after {
   content: '';
   position: absolute;
-  z-index: 1;
+  z-index: 6;
   top: -9px;
   width: 100%;
   height: 3.2px;
@@ -377,6 +417,30 @@
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555; 
+}
+
+.awareI {
+  text-align: center;
+  position: relative;
+  top:140px;
+  right: 20px;
+  background-color: #0d0d0d;
+  border-radius: 10px;
+  max-width: 1500px;
+  margin: auto;
+  overflow: hidden;
+  padding: 0 2rem;
+  z-index: -1;
+  color: #fff;
+}
+
+.awareI img {
+    display: inline-block;
+    border-radius: 17px;
+    margin: 10px 26px;
+    width:100%;
+    max-width: 600px;
+    /* padding: 18px 0; */
 }
 
 
