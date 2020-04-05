@@ -48,15 +48,17 @@ const useStyles = makeStyles((theme) => ({
     position:"relative",
     top:500,
     overflowX:"scroll",
-    width:"110%",
+    width:"100%",
     borderRadius: 10,
-    maxWidth: 1960,
+    maxWidth: 1300,
     margin: "auto",
     zIndex: -1,
-    marginBottom: 100
+    marginBottom: 20,
+    paddingBottom:60
   },
   tabs: {
     borderRight: `1px solid ${theme.palette.divider}`,
+    width:190,
   },
 }));
 

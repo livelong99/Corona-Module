@@ -1,6 +1,6 @@
 :root {
-  --primary-color: 	rgba(204, 102, 255, 0.75);
-  --overlay-color: rgba(187, 51, 255,0.7);
+  --primary-color: 	rgba(13, 13, 13, 0.75);
+  --overlay-color: rgba(255, 255, 255,0.97);
   --menu-speed: 0.75s;
 }
 
@@ -28,7 +28,7 @@
     /* display: flex; */
     justify-content: center;
     align-items: center;
-    background: #0D0C1D;
+    background: #0d0d0d;
     height: 100vh;
     text-rendering: optimizeLegibility;
     padding: 0 16px;
@@ -36,7 +36,7 @@
   
   header {
     position:fixed;
-    background-color:#0D0C1D;
+    background-color:#0d0d0d;
     margin: auto -16px;
     padding: 16px 92px;
     padding-right: 20px;
@@ -47,7 +47,7 @@
   header h1 {
     color: #fff;
     font-size: 220%;
-    font-family: "McLaren", cursive;
+    font-family:  'Ubuntu','Roboto', 'Arvo', sans-serif;
     font-weight: 200;
   }
 
@@ -65,8 +65,10 @@
 
   .graph {
     position: absolute;
-    left:560px;
-    top:20px;  
+    left:470px;
+    top:20px; 
+    width: 100%;
+    max-width:700px; 
   }
 
   .countryDetail {
@@ -75,7 +77,7 @@
 
   .countryDetail h1 {
     color: #111;
-    font-family: "Baloo Thambi 2","Roboto", sans-serif;
+    font-family: "Arvo","Roboto", sans-serif;
   }
 
   .countryDetail p {
@@ -83,8 +85,168 @@
     font-family: "McLaren","Roboto", sans-serif;
     size: 18px;
   }
-  
 
+  .option {
+    margin-top: 10px;
+}
+  .option > .dx-widget {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+
+  /* MENU STYLES */
+.menu-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.menu-wrap .toggler {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  z-index: 2;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  opacity: 0;
+}
+
+.menu-wrap .hamburger {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  z-index: 1;
+  width: 60px;
+  height: 60px;
+  padding: 1rem;
+  background:rgba(255, 255, 255,0);;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hamburger Line */
+.menu-wrap .hamburger > div {
+  position: relative;
+  flex: none;
+  width: 100%;
+  height: 3.2px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 70px;
+  transition: all 0.4s ease;
+}
+
+/* Hamburger Lines - Top & Bottom */
+.menu-wrap .hamburger > div::before,
+.menu-wrap .hamburger > div::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: -9px;
+  width: 100%;
+  height: 3.2px;
+  border-radius: 70px;
+  background: inherit;
+}
+
+/* Moves Line Down */
+.menu-wrap .hamburger > div::after {
+  top: 9px;
+}
+
+/* Toggler Animation */
+
+
+.menu-wrap .toggler:checked + .hamburger > div {
+  background: #000;
+  transform: rotate(135deg);
+}
+
+/* Turns Lines Into X */
+.menu-wrap .toggler:checked + .hamburger > div:before,
+.menu-wrap .toggler:checked + .hamburger > div:after {
+  top: 0;
+  transform: rotate(90deg);
+}
+
+/* Rotate On Hover When Checked */
+.menu-wrap .toggler:checked:hover + .hamburger > div {
+  transform: rotate(225deg);
+}
+
+/* Show Menu */
+.menu-wrap .toggler:checked ~ .menu {
+  visibility: visible;
+}
+
+.menu-wrap .toggler:checked ~ .menu > div {
+  transform: scale(1);
+  transition-duration: var(--menu-speed);
+}
+
+.menu-wrap .toggler:checked ~ .menu > div > div {
+  opacity: 1;
+  transition:  opacity 0.4s ease 0.4s;
+}
+
+.menu-wrap .menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-wrap .menu > div {
+  background: var(--overlay-color);
+  border-radius: 50%;
+  width: 200vw;
+  height: 200vw;
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0);
+  transition: all 0.4s ease;
+}
+
+.menu-wrap .menu > div > div {
+  text-align: center;
+  max-width: 90vw;
+  max-height: 100vh;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.menu-wrap .menu > div > div > ul > li {
+  list-style: none;
+  font-family: 'Ubuntu', 'Roboto', 'Arvo', sans-serif;
+  color: #0d0d0d;
+  font-size: 2rem;
+  line-height: 3.5rem;
+  padding: 1rem;
+}
+
+.menu-wrap .menu > div > div > ul > li > button {
+  background-color:inherit ;
+  font-family: 'Ubuntu', 'Roboto', 'Arvo', sans-serif;
+  color: inherit;
+  font-size:inherit;
+  size:2rem;
+  border: none;
+  transition: color 0.4s ease;
+}
 
   
   .Worldlogo {
@@ -122,7 +284,7 @@
     text-align: center;
     position: relative;
     top:290px;
-    background-color: #0D0C1D;
+    background-color: #0d0d0d;
     border-radius: 10px;
     max-width: 1300px;
     margin: auto;
@@ -143,7 +305,7 @@
     border-radius: 10px;
     color: #fff;
     text-align: center;
-    font-family:"Baloo Thambi 2",sans-serif ;
+    font-family:"Arvo",sans-serif ;
     margin: 10px 26px;
     width: 200px;
     padding: 18px 0;
@@ -197,6 +359,24 @@
   }
 
   
-  
+  ::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
 
 
