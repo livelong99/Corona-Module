@@ -103,6 +103,37 @@
     color:white;
   }
 
+  .About {
+    position: relative;
+    margin:auto;
+    top: 150px;
+    width:100%;
+    max-width: 600px;
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 130px;
+  }
+
+  .About h1 {
+    font-family: "Ubuntu";
+
+  }
+
+  .About p {
+    font-family: "McLaren";
+  }
+
+  .About a > img {
+    display: inline-block;
+    /* border-radius: 10px; */
+    margin: 20px 10%;
+    width:30%;
+    max-width: 600px;
+    /* padding: 18px 0; */
+}
+
   .graph {
     position: absolute;
     left:470px;

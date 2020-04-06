@@ -10,14 +10,3 @@ ReactDom.render(
     </Store>,
     document.getElementById("root")
 )
-// fetch("https://corona.lmao.ninja/countries/India")
-//     .then(res => {
-//         return response.json();
-//     })
-//     .then(data => {
-//         console.log(data);
-//     })
-//     .catch(err => {
-//         console.log(err);
-//     })
-// console.log(n);

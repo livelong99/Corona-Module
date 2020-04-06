@@ -35,6 +35,10 @@ function Menu(props) {
               setCheck(false);
               props.toShow(4);
             }}>Helpline</button></li>
+            <li><button onClick={() => {
+              setCheck(false);
+              props.toShow(5);
+            }}>About</button></li>
           </ul>
         </div>
       </div>

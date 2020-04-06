@@ -4,7 +4,8 @@ import Header from "./Header";
 import India from "./India";
 import World from "./World";
 import Aware from "./Aware";
-import Help from "./Helpline/index";
+import Help from "./Helpline";
+import About from "./About";
 
 function App() {
     const [show, setShow] = useState(1);
@@ -23,6 +24,8 @@ function App() {
             return (<Aware />);
         else if(show===4)
             return (<Help />);
+        else if(show===5)
+            return (<About/>)
     }
 
 
