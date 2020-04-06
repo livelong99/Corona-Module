@@ -22,28 +22,29 @@ function World () {
     
     if(wTotal.length === 0)
         WTotal();
+        const nfObject = new Intl.NumberFormat('en-US');
 
     return (
         <div className="total">
             <ul>
                 <li className="orange">
                     <img src="./Images/icon-infected.png" alt="infected"></img>
-                    <strong>{wTotal.cases}</strong>
+                    <strong>{nfObject.format(parseInt(wTotal.cases))}</strong>
                     <span>Total Cases</span>
                 </li>
                 <li className="green">
                     <img src="./Images/icon-inactive.png" alt="safe"></img>
-                    <strong>{wTotal.recovered}</strong>
+                    <strong>{nfObject.format(parseInt(wTotal.recovered))}</strong>
                     <span>Cured/Dischrged</span>
                 </li>
                 <li className="red">
                     <img src="./Images/icon-death.png" alt="dead"></img>
-                    <strong>{wTotal.deaths}</strong>
+                    <strong>{nfObject.format(parseInt(wTotal.deaths))}</strong>
                     <span>Deaths</span>
                 </li>
                 <li className="blue">
                     <img src="./Images/icon-active.png" alt="active"></img>
-                    <strong>{wTotal.active}</strong>
+                    <strong>{nfObject.format(parseInt(wTotal.active))}</strong>
                     <span>Active Cases</span>
                 </li>
             </ul>

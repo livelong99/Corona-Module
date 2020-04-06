@@ -94,14 +94,15 @@ function VerticalTabs(props) {
     }
 
     function setPanel(record, index) {
+      const nfObject = new Intl.NumberFormat('en-US');
         return(
             <TabPanel value={value} index={index}>
             <div className = "countryDetail">
                 <h1> {record.state}</h1><br/>
-                <p>Total Cases: {record.confirmed}</p>
-                <p><p className="red">Deaths: {record.deaths}</p></p>
-                <p><p className="green">Recoveries: {record.recovered}</p></p>
-                <p>Active Cases: {record.active}</p>
+                <p>Total Cases: {nfObject.format(parseInt(record.confirmed))}</p>
+                <p><p className="red">Deaths: {nfObject.format(parseInt(record.deaths))}</p></p>
+                <p><p className="green">Recoveries: {nfObject.format(parseInt(record.recovered))}</p></p>
+                <p>Active Cases: {nfObject.format(parseInt(record.active))}</p>
             </div>
             </TabPanel>
         )

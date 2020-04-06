@@ -23,28 +23,29 @@ function Total(props) {
     }
     if(indTotal.length === 0)
         ITotal();
+    const nfObject = new Intl.NumberFormat('en-US');
 
     return(
         <div className="total">
             <ul>
                 <li className="orange">
                     <img src="./Images/icon-infected.png" alt="infected"></img>
-                    <strong>{indTotal.cases}</strong>
+                    <strong>{nfObject.format(parseInt(indTotal.cases))}</strong>
                     <span>Total Cases</span>
                 </li>
                 <li className="green">
                     <img src="./Images/icon-inactive.png" alt="safe"></img>
-                    <strong>{indTotal.recovered}</strong>
+                    <strong>{nfObject.format(parseInt(indTotal.recovered))}</strong>
                     <span>Cured/Dischrged</span>
                 </li>
                 <li className="red">
                     <img src="./Images/icon-death.png" alt="dead"></img>
-                    <strong>{indTotal.deaths}</strong>
+                    <strong>{nfObject.format(parseInt(indTotal.deaths))}</strong>
                     <span>Deaths</span>
                 </li>
                 <li className="blue">
                     <img src="./Images/icon-active.png" alt="active"></img>
-                    <strong>{indTotal.active}</strong>
+                    <strong>{nfObject.format(parseInt(indTotal.active))}</strong>
                     <span>Active Cases</span>
                 </li>
             </ul>

@@ -79,11 +79,6 @@ function Graph(props) {
     name = props.name;
 
   var info = history[name]
-  console.log(info);
-  
-  
-  if(info===null)
-    info = history[""];
     
     
 

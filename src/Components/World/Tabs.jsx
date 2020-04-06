@@ -100,18 +100,19 @@ function VerticalTabs(props) {
     }
 
     function setPanel(record, index) {
+      const nfObject = new Intl.NumberFormat('en-US');
         return(
             <TabPanel value={value} index={index}>
             <div className = "countryDetail">
             <img  alt="Flag" className="flag" src={record.countryInfo.flag}></img>
                 <h1> {record.country }</h1><br/>
-                <p>Total Cases: {record.cases}</p>
-                <p>New Cases Today: {record.todayCases}</p>
-                <p><p style={{color:"red"}}>Deaths: {record.deaths}</p></p>
-                <p>New Deaths Today: {record.todayDeaths}</p>
-                <p><p style={{color:"green"}}>Recoveries: {record.recovered}</p></p>
-                <p>Active Cases: {record.active}</p>
-                <p>Critical Cases: {record.critical}</p>
+                <p>Total Cases: {nfObject.format(parseInt(record.cases))}</p>
+                <p>New Cases Today: {nfObject.format(parseInt(record.todayCases))}</p>
+                <p><p style={{color:"red"}}>Deaths: {nfObject.format(parseInt(record.deaths))}</p></p>
+                <p>New Deaths Today: {nfObject.format(parseInt(record.todayDeaths))}</p>
+                <p><p style={{color:"green"}}>Recoveries: {nfObject.format(parseInt(record.recovered))}</p></p>
+                <p>Active Cases: {nfObject.format(parseInt(record.active))}</p>
+                <p>Critical Cases: {nfObject.format(parseInt(record.critical))}</p>
             </div>
             <div className="graph"><Graph name={record.country} ></Graph></div>
             </TabPanel>
