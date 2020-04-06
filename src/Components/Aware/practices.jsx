@@ -5,7 +5,7 @@ export default function practice() {
     return(
         <div className="awareI">
         {number.map((num) =>{
-            return (<img src={"./Images/aware/practice/practices0"+num+".png"} />)
+            return (<img alt="Genral Practices" src={"./Images/aware/practice/practices0"+num+".png"} />)
         })}
         </div>
     )

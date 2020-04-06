@@ -1,7 +1,6 @@
 import React, {useState} from "react"
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import { makeStyles } from '@material-ui/core/styles';
 import Mask from "./masks";
@@ -12,8 +11,6 @@ import Stress from "./stress";
 import Parent from "./parenting";
 import Myth from "./myth";
 import Safe from "./safe";
-import { AutoLayout } from "devextreme-react/diagram";
-import zIndex from "@material-ui/core/styles/zIndex";
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -47,31 +44,31 @@ export default function Aware() {
             return(
                 <Safe />
             );
-        else if(aware==1)
+        else if(aware===1)
             return(
                 <Practice />
             )
-        else if(aware==2)
+        else if(aware===2)
             return (
                 <Myth />
             )
-        else if(aware==3)
+        else if(aware===3)
             return(
                 <Mask />
             )
-        else if(aware==4)
+        else if(aware===4)
             return(
                 <Parent /> 
             )
-        else if(aware==5)
+        else if(aware===5)
             return(
                 <Stress />
             )
-        else if(aware==6)
+        else if(aware===6)
             return(
                 <Travel />
             )
-        else if(aware==7)
+        else if(aware===7)
             return(
                 <Pregnent />
             )    

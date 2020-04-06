@@ -68,7 +68,7 @@ function VerticalTabs(props) {
   const classes = useStyles();
   const [value, setValue] = useState(0); 
   const [world, setWorld] = useContext(WorldContext);
-  const {height, width} = dimensions();
+  const {width} = dimensions();
   console.log(width);
   
 
@@ -82,11 +82,12 @@ function VerticalTabs(props) {
         })
     .then((response)=>{
         const Timeline = response.data;
-        setWorld(Timeline);
+        return Timeline;
     })
     .catch((error)=>{
         console.log(error)
     });
+    setWorld(rec);
   }
 
   if(world.length === 0)
@@ -125,7 +126,7 @@ function VerticalTabs(props) {
 
     <>
       {width<600?(<div className="swipe">
-        <img src="./Images/swipe.png"></img>
+        <img src="./Images/swipe.png" alt="Swipe"></img>
       </div>):null} 
       <div className={classes.root}>
         <Tabs

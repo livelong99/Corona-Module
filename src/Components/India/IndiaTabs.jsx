@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
     position:"relative",
     top:450,
     //left:360,
-    width:"90%",
+    width:"98%",
     borderRadius: 10,
     maxWidth: 600,
     margin: "auto",
@@ -57,7 +57,8 @@ const useStyles = makeStyles((theme) => ({
   },
   tabs: {
     borderRight: `1px solid ${theme.palette.divider}`,
-    width:"40%"
+    width:"40%",
+    minWidth:130,
   },
 }));
 

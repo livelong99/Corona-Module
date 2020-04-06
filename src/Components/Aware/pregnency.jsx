@@ -5,7 +5,7 @@ export default function pregnent() {
     return(
         <div className="awareI">
         {number.map((num) =>{
-            return (<img src={"./Images/aware/pregnant/pregnancy0"+num+".png"} />)
+            return (<img alt="Pregnancy Care" src={"./Images/aware/pregnant/pregnancy0"+num+".png"} />)
         })}
         </div>
     )

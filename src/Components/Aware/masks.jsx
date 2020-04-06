@@ -5,7 +5,7 @@ export default function masks() {
     return(
         <div className="awareI">
         {number.map((num) =>{
-            return (<img src={"./Images/aware/masks/masks-"+num+".jpg"} />)
+            return (<img alt="Masks" src={"./Images/aware/masks/masks-"+num+".jpg"} />)
         })}
         </div>
     )

@@ -7,7 +7,6 @@ import Aware from "./Aware";
 import Help from "./Helpline/index";
 
 function App() {
-    const [open, setOpen] = useState(false);
     const [show, setShow] = useState(1);
 
     function whatToShow(k) {

@@ -5,7 +5,7 @@ export default function myth() {
     return(
         <div className="awareI">
         {number.map((num) =>{
-            return (<img src={"./Images/aware/myth/myth"+(num)+".jpg"} />)
+            return (<img alt="Myth Busters" src={"./Images/aware/myth/myth"+(num)+".jpg"} />)
         })}
         </div>
     )

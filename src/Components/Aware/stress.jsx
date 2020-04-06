@@ -5,7 +5,7 @@ export default function stress() {
     return(
         <div className="awareI">
         {number.map((num) =>{
-            return (<img src={"./Images/aware/stress/stress0"+num+".jpg"} />)
+            return (<img Alt="Stress" src={"./Images/aware/stress/stress0"+num+".jpg"} />)
         })}
         </div>
     )

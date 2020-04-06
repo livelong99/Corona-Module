@@ -3,20 +3,17 @@ import Paper from "@material-ui/core/Paper";
 import {HistoryContext} from '../Store';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import { makeStyles } from '@material-ui/core/styles';
-import axios from "axios";
+import request from "request";
 import {
   Chart,
   Series,
   ArgumentAxis,
   CommonSeriesSettings,
-  Export,
   Legend,
   Margin,
   Title,
-  Subtitle,
   Tooltip,
   Label,
   Grid
@@ -40,56 +37,67 @@ function Graph(props) {
   const [chart, setChart] = useState(0);
 
   const Hist = async () => {
-    const rec = await axios({
-    "method": "get",
-    "url": "https://corona.lmao.ninja/v2/historical"})
-    .then((response)=>{
-        const Timeline = response.data;
-        return Timeline;
-    })
-    .catch((error)=>{
-        console.log(error)
-  });
-  setHistory(rec)
+
+    var options = {
+      'method': 'GET',
+      'url': 'https://pomber.github.io/covid19/timeseries.json',
+      'headers': {
+      }
+    };
+    request(options, function (error, response) { 
+      if (error) throw new Error(error);
+      setHistory(JSON.parse(response.body));
+    });
   }
 
   if(history.length===0)
-    Hist();
+    Hist();    
 
-  const info = history.filter((rec)=>(rec.country===props.name))
+   var name = "";
 
-  console.log(info.length);
+  if(props.name==="USA")
+    name = "US";
+  else if(props.name==="UK")
+    name = "United Kingdom";
+  else if(props.name==="S. Korea")
+    name = "Korea, South";
+  else if(props.name==="UAE")
+    name = "United Arab Emirates";
+  else if(props.name==="Moldova, Republic of")
+    name = "Moldova";
+  else if(props.name==="Tanzania, United Republic of")
+    name = "Tanzania";
+  else if(props.name==="Syrian Arab Republic")
+    name = "Syria";
+  else if(props.name==="Libyan Arab Jamahiriya")
+    name = "Libya";
+  else if(props.name==="Lao People\"s Democratic Republic")
+    name = "Laos";
+  else if(props.name==="Holy See (Vatican City State)")
+    name = "Holy See";
+  else
+    name = props.name;
+
+  var info = history[name]
+  console.log(info);
   
-
   
+  if(info===null)
+    info = history[""];
+    
+    
 
-  function getData(record) {
-
-    const Cases = record.timeline.cases;
-    const Deaths = record.timeline.deaths;
-    const Recovered = record.timeline.recovered;
-    const data = []
-    const dates = Object.keys(Cases);
-    var date;
-    for(date of dates) {
-       if(Cases[date]>0){
-          if(date.length===7)
-            data.push({argument:date.substring(0,4) , cases: Cases[date], deaths: Deaths[date], recovered: Recovered[date] });
-          else
-            data.push({argument:date.substring(0,3) , cases: Cases[date], deaths: Deaths[date], recovered: Recovered[date] });       
-          }
-    }
-
+  function getData() {
     return (
       <Chart
           palette={chart===0?"Material":chart===1?"Dark Voilet":chart===2?"Carmine":chart===3?"Bright":null}
-          dataSource={data}
+          dataSource={info}
         >
           <CommonSeriesSettings
-            argumentField="argument"
+            argumentField="date"
             type="line"
           />
-          {chart===0||chart===1?<Series key="cases" valueField="cases" name="Total Cases" />:null}
+          {chart===0||chart===1?<Series key="confirmed" valueField="confirmed" name="Total Cases" />:null}
           {chart===0||chart===2?<Series key="deaths" valueField="deaths" name="Total Deaths" />:null}
           {chart===0||chart===3?<Series key="recovered" valueField="recovered" name="Total Recoveries" />:null}
           <Margin bottom={20} right={10} />
@@ -99,7 +107,8 @@ function Graph(props) {
           >
           <Label
               wordWrap="none"
-              overlappingBehavior={"hidden"}
+              overlappingBehavior={"rotate"}
+              rotationAngle={60}
             />
           <Grid visible={true} />
           </ArgumentAxis>
@@ -108,7 +117,7 @@ function Graph(props) {
               horizontalAlignment="center"
               itemTextPosition="bottom"
             />
-            <Title text={"Corona Record in " + props.name}>
+            <Title text={"Corona Record in " + name}>
               
             </Title>
             <Tooltip enabled={true} />
@@ -126,7 +135,7 @@ function Graph(props) {
   return (
     <Paper>
 
-      {info.map(getData)}
+      {getData()}
       <FormControl className={classes.formControl}>
         {/* <InputLabel id="demo-simple-select-label">Age</InputLabel> */}
         <Select
@@ -150,33 +159,3 @@ function Graph(props) {
 
 
 export default (Graph);
-
-
-{/* <Chart data={data} width={800} height={400}>
-        <ArgumentAxis>
-        <Label
-              wordWrap="none"
-              overlappingBehavior={"stagger"}
-            />
-        </ArgumentAxis>
-        <ValueAxis />
-        <Title text={"Corona Record in " + props.name} />
-
-        <LineSeries
-            name="Total Cases"
-            valueField="cases"
-            argumentField="argument"
-          />
-          <LineSeries
-            name="Total Deaths"
-            valueField="deaths"
-            argumentField="argument"
-          />
-          <LineSeries
-            name="Total Recoveries"
-            valueField="recovered"
-            argumentField="argument"
-          />
-          <Legend />
-          <ZoomAndPan />
-      </Chart> */}

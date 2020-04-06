@@ -5,7 +5,7 @@ export default function travel() {
     return(
         <div className="awareI">
         {number.map((num) =>{
-            return (<img src={"./Images/aware/travel/travel0"+num+".png"} />)
+            return (<img alt="Travel" src={"./Images/aware/travel/travel0"+num+".png"} />)
         })}
         </div>
     )

@@ -5,7 +5,7 @@ export default function parent() {
     return(
         <div className="awareI">
         {number.map((num) =>{
-            return (<img src={"./Images/aware/Parenting/parenting0"+num+".jpg"} />)
+            return (<img alt="Parental Care" src={"./Images/aware/Parenting/parenting0"+num+".jpg"} />)
         })}
         </div>
     )

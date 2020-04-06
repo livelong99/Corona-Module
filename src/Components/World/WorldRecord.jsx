@@ -1,9 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import axios from "axios";
 import {WorldFullContext} from '../Store';
 
 
-function World (props) {
+function World () {
     const [wTotal, setWorldTotal] = useContext(WorldFullContext);
     const WTotal = async () => {
         const rec = await axios({
@@ -12,11 +12,12 @@ function World (props) {
             })
         .then((response)=>{
             const Timeline = response.data;
-            setWorldTotal(Timeline);
+            return Timeline;
         })
         .catch((error)=>{
             console.log(error)
     });
+    setWorldTotal(rec);
     }
     
     if(wTotal.length === 0)
