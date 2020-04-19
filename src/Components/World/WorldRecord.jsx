@@ -8,7 +8,7 @@ function World () {
     const WTotal = async () => {
         const rec = await axios({
             "method":"GET",
-            "url":"https://corona.lmao.ninja/all"
+            "url":"https://corona.lmao.ninja/v2/all"
             })
         .then((response)=>{
             const Timeline = response.data;

@@ -90,7 +90,7 @@ export default function Aware() {
           onChange={handleChange}
         >
           <MenuItem value={0}>{"Stay Safe"}</MenuItem>
-          <MenuItem value={1}>{"Genral Practices"}</MenuItem>
+          <MenuItem value={1}>{"General Practices"}</MenuItem>
           <MenuItem value={2}>{"Myth Busters"}</MenuItem>
           <MenuItem value={3}>{"How to Use Masks"}</MenuItem>
           <MenuItem value={4}>{"Parental Care"}</MenuItem>

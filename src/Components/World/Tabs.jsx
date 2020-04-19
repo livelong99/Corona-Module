@@ -69,13 +69,12 @@ function VerticalTabs(props) {
   const [value, setValue] = useState(0); 
   const [world, setWorld] = useContext(WorldContext);
   const {width} = dimensions();
-  console.log(width);
   
 
   const World =  async () => {
     const rec = await axios({
         "method":"GET",
-        "url":"https://corona.lmao.ninja/countries",
+        "url":"https://corona.lmao.ninja/v2/countries",
         "params":{
         "sort":"cases"
         }

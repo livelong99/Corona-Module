@@ -10,7 +10,7 @@ function Total(props) {
     const ITotal = async () => {
         const rec = await axios({
             "method":"GET",
-            "url":"https://corona.lmao.ninja/countries/India"
+            "url":"https://corona.lmao.ninja/v2/countries/India"
             })
             .then((response)=>{
                 const Timeline = response.data;
